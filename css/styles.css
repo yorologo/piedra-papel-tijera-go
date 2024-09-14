@@ -1,0 +1,149 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    text-align: center; /* Centrar el contenido */
+}
+
+h1 {
+    font-size: 5vw;
+    margin-bottom: 2vw;
+}
+
+.score-board {
+    margin: 1vw 0;
+    font-size: 4vw;
+    font-weight: bold;
+}
+
+/* Mano de cartas en forma de abanico */
+.hand-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 20px;
+    gap: 0; /* Sin espacio entre cartas */
+}
+
+/* Estilo para las cartas */
+.card-game {
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-left: -20px; /* Solapamiento sutil entre cartas */
+    transform-origin: center bottom; /* Agrandamiento hacia arriba */
+}
+
+/* Estado revelado de la carta */
+.card-game.reveal {
+    background-color: #fff;
+}
+
+/* Estilo de las cartas de la IA */
+.ai-hand .card-game {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Rotación y posicionamiento para el abanico */
+.hand-container .card-game:nth-child(1) {
+    transform: rotate(-15deg); /* Rotar la primera carta a la izquierda */
+}
+
+.hand-container .card-game:nth-child(2) {
+    transform: rotate(0deg); /* La segunda carta queda sin rotación */
+}
+
+.hand-container .card-game:nth-child(3) {
+    transform: rotate(15deg); /* Rotar la tercera carta a la derecha */
+}
+
+/* Efecto hover: agrandar y añadir sombra sin desplazar las demás cartas */
+.card-game:hover {
+    transform: scale(1.1); /* Agrandar hacia arriba */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra alrededor */
+    z-index: 1; /* Asegura que la carta quede por encima de las demás */
+}
+
+/* Cartas jugadas en el tablero */
+.played-card {
+    width: 50px;
+    height: 75px;
+    background-color: #e3e3e3;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+/* Mensaje de resultado */
+.result-message {
+    font-size: 4vw;
+    font-weight: bold;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    text-align: center;
+    transition: color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+/* Estilos para el mensaje de resultado según el estado del juego */
+.result-message.win {
+    color: green;
+}
+
+.result-message.lose {
+    color: red;
+}
+
+.result-message.tie {
+    color: black; /* Puedes cambiarlo si prefieres otro color para el empate */
+}
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
+    /* Quitar el efecto de abanico en pantallas pequeñas */
+    .hand-container .card-game {
+        transform: rotate(0deg) !important;
+        margin-left: 0; /* No solapar cartas en pantallas pequeñas */
+    }
+
+    /* Reducir el tamaño de las cartas en pantallas pequeñas */
+    .card-game {
+        width: 80px;
+        height: 120px;
+        font-size: 48px; /* Ajustar el tamaño del icono */
+    }
+
+    /* Ajustar el tamaño de las cartas jugadas en el tablero */
+    .played-card {
+        width: 40px;
+        height: 60px;
+        font-size: 16px;
+    }
+
+    /* Ajustar el tamaño del resultado del juego */
+    .result-message {
+        font-size: 3vw;
+        height: 8vh;
+    }
+
+    /* Ajuste del título del juego */
+    h1 {
+        font-size: 6vw; /* Hacer el título un poco más grande en pantallas pequeñas */
+    }
+}
